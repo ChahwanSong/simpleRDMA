@@ -19,52 +19,51 @@ Server:
   5. send information about the local server buffer to the client 
   6. wait for disconnect
 
-###### How to run      
-```
-git clone https://github.com/animeshtrivedi/rdma-example.git
-cd ./rdma-example
+###### How to build     
+```shell
+git clone https://github.com/ChahwanSong/simpleRDMA.git
+cd ./simpleRDMA
 cmake .
 make
 ``` 
  
-###### server
-```
-./bin/rdma_server
-```
-###### client
-```
-atr@atr:~/rdma-example$ ./bin/rdma_client -a 127.0.0.1 -s textstring 
-Passed string is : textstring , with count 10 
-Trying to connect to server at : 127.0.0.1 port: 20886 
-The client is connected successfully 
----------------------------------------------------------
-buffer attr, addr: 0x5629832e22c0 , len: 10 , stag : 0x1617b400 
----------------------------------------------------------
-...
-SUCCESS, source and destination buffers match 
-Client resource clean up is complete 
-atr@atr:~/rdma-example$ 
-
-```
-
 #### Create 100KB dummy text file on linux
-```
+```shell
 base64 /dev/urandom | head -c 100000 > 100KB.txt
 ```
 
-#### Enable large-file transmission
+## IMPORTANT: Enable large-file transmission
 Your basic linux setup would limit the stack size to 8MB (check `ulimit -a`). To resolve it, you can use the command:
-```
+```shell
 ulimit -s unlimited
 ```
-But, be careful that as the memory is at premium, you need to care after unlimiting the constraint!!
 
-## Does not have an RDMA device?
-In case you do not have an RDMA device to test the code, you can setup SofitWARP software RDMA device on your Linux machine. Follow instructions here: [https://github.com/animeshtrivedi/blog/blob/master/post/2019-06-26-siw.md](https://github.com/animeshtrivedi/blog/blob/master/post/2019-06-26-siw.md).
+## Running server and client
+Server:
+```shell
+./bin/rdma_server --h
+*** Start server running (infinite loop) ***
 
+./bin/rdma_server: invalid option -- '-'
+Usage:
+rdma_server: [-a <server_addr>] [-p <server_port>]
+(default port is 20886)
+```
+
+Client:
+```shell
+./bin/rdma_client --h
+---Start parsing...
+./bin/rdma_client: invalid option -- '-'
+Usage:
+rdma_client: [-a <server_addr>] [-p <server_port>] [-s string (e.g., 'test') or -f filename in /src (relative dir to current))] [-l filename to record timestamp (relative dir to current, e.g., /log.txt] [-n <number to run> - optional, default 1]
+(default IP is 127.0.0.1 and port is 20886)
+```
+
+If you did not run `ulimit -s unlimited`, you may confront `Segmentation Fault` error. 
 
 ## Bash script of client
-```
+```shell
 #!/bin/bash
 
 flow_size=$1
@@ -77,24 +76,24 @@ ulimit -s unlimited
 ```
 
 Separately, we use the following command
-```
+```shell
 ./bin/rdma_client -a 10.10.10.2 -f /src/100KB.txt -l /out.log -n 1
 ```
 
-## Using `ib_send_bw` to test bandwidth
+## Using `ib_send_bw` to test bandwidth (TODO: irrelevant with this repository)
 Server runs
-```
+```shell
 ib_send_bw -F -d mlx5_1 --report_gbits -D 10 -s 1000000000
 ```
 Client runs
-```
+```shell
 ib_send_bw 10.2.2.2 -F -d mlx5_1 --report_gbits -D 10 -s 1000000000
 ```
 where the server's ip address is `10.2.2.2`. Other options are `-q` to increase throughput with more queue pairs, and `-m` for MTU size.
 
-## Using n2disk to dump packets
+## Using n2disk to dump packets (TODO: irrelevant with this repository)
 Before running n2disk with performance-mode, you need to set up the hugepage:
-```
+```shell
 echo "[Check] ulimit -s unlimited"
 ulimit -s unlimited
 
