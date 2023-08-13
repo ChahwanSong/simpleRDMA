@@ -712,8 +712,6 @@ int main(int argc, char **argv)
         if (ret)
         {
             rdma_error("Failed to setup client connection , ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
 
@@ -721,8 +719,6 @@ int main(int argc, char **argv)
         if (ret)
         {
             rdma_error("Failed to setup client connection , ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
 
@@ -730,42 +726,24 @@ int main(int argc, char **argv)
         if (ret)
         {
             rdma_error("Failed to setup client connection , ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
         ret = client_xchange_metadata_with_server();
         if (ret)
         {
             rdma_error("Failed to setup client connection , ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
         ret = client_remote_memory_ops(logf); // start part
         if (ret)
         {
             rdma_error("Failed to finish remote memory ops, ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
-#if (0)
-        if (check_src_dst())
-        {
-            rdma_error("src and dst buffers do not match \n");
-        }
-        else
-        {
-            printf("...\nSUCCESS, source and destination buffers match \n");
-        }
-#endif
         ret = client_disconnect_and_clean();
         if (ret)
         {
             rdma_error("Failed to cleanly disconnect and clean up resources \n");
-            // return ret;
-            // continue;
             break;
         }
     }

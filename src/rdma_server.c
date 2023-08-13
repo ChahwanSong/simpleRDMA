@@ -460,36 +460,26 @@ int main(int argc, char **argv) {
         ret = start_rdma_server(&server_sockaddr_fixed);
         if (ret) {
             rdma_error("RDMA server failed to start cleanly, ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
         ret = setup_client_resources();
         if (ret) {
             rdma_error("Failed to setup client resources, ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
         ret = accept_client_connection();
         if (ret) {
             rdma_error("Failed to handle client cleanly, ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
         ret = send_server_metadata_to_client();
         if (ret) {
             rdma_error("Failed to send server metadata to the client, ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
         ret = disconnect_and_cleanup();
         if (ret) {
             rdma_error("Failed to clean up resources properly, ret = %d \n", ret);
-            // return ret;
-            // continue;
             break;
         }
         printf("Server %d disconnected\n\n\n", nLoop);
