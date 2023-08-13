@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mason/workspace/slb_node/simpleRDMA
+CMAKE_SOURCE_DIR = /home/mason/workspace/simpleRDMA
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mason/workspace/slb_node/simpleRDMA
+CMAKE_BINARY_DIR = /home/mason/workspace/simpleRDMA
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mason/workspace/slb_node/simpleRDMA/CMakeFiles /home/mason/workspace/slb_node/simpleRDMA//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mason/workspace/simpleRDMA/CMakeFiles /home/mason/workspace/simpleRDMA//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mason/workspace/slb_node/simpleRDMA/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mason/workspace/simpleRDMA/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

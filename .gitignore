@@ -1,5 +1,5 @@
-/backup_*/**
-/log/**
-/log*
-cx5_*
-cx6_*
+log/*
+bin/*
+./CMakeCache.txt
+./cmake_install.cmake
+./CMakeFiles/**

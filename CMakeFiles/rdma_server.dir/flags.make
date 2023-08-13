@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/mason/workspace/slb_node/simpleRDMA/src -I/home/mason/local/include
+C_INCLUDES = -I/home/mason/workspace/simpleRDMA/src -I/home/mason/local/include
 
 C_FLAGS = -O3 -DNDEBUG
 

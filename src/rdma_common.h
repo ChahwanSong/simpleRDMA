@@ -57,11 +57,11 @@ uint64_t timespec_to_ns(struct timespec t_spec);
 /* WRITE OR READ */
 #define WRITE_READ (1) // 1: WRITE, 0: READ
 /* max file data - 1GB */
-#define MAX_DATA_LEN (1024 * 1024 * 10)// 1GB (1073741824)
+#define MAX_DATA_LEN (1024 * 1024 * 1) // 1 MB buffer
 /* Capacity of the completion queue (CQ) */
 #define CQ_CAPACITY (32)
 /* MAX SGE capacity */
-#define MAX_SGE (2)
+#define MAX_SGE (3)
 /* MAX work requests */
 #define MAX_WR (32)
 /* Default port where the RDMA server is listening */

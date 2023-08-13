@@ -1,7 +1,7 @@
 CMakeFiles/rdma_client.dir/src/rdma_client.c.o: \
- /home/mason/workspace/slb_node/simpleRDMA/src/rdma_client.c \
+ /home/mason/workspace/simpleRDMA/src/rdma_client.c \
  /usr/include/stdc-predef.h \
- /home/mason/workspace/slb_node/simpleRDMA/src/rdma_common.h \
+ /home/mason/workspace/simpleRDMA/src/rdma_common.h \
  /usr/include/arpa/inet.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/mason/workspace/slb_node/simpleRDMA/src/rdma_common.c" "CMakeFiles/rdma_server.dir/src/rdma_common.c.o" "gcc" "CMakeFiles/rdma_server.dir/src/rdma_common.c.o.d"
-  "/home/mason/workspace/slb_node/simpleRDMA/src/rdma_server.c" "CMakeFiles/rdma_server.dir/src/rdma_server.c.o" "gcc" "CMakeFiles/rdma_server.dir/src/rdma_server.c.o.d"
+  "/home/mason/workspace/simpleRDMA/src/rdma_common.c" "CMakeFiles/rdma_server.dir/src/rdma_common.c.o" "gcc" "CMakeFiles/rdma_server.dir/src/rdma_common.c.o.d"
+  "/home/mason/workspace/simpleRDMA/src/rdma_server.c" "CMakeFiles/rdma_server.dir/src/rdma_server.c.o" "gcc" "CMakeFiles/rdma_server.dir/src/rdma_server.c.o.d"
   )
 
 # Targets to which this target links.

@@ -388,7 +388,8 @@ static int client_remote_memory_ops(FILE *logf)
 
     // // code to log to the file
     // printf("QPNUM: %u, DIFF: %lu\n", qp_num, timespec_to_ns(ts_finish) - timespec_to_ns(ts_start));
-    fprintf(logf, "%u,%lu,%lu\n", qp_num, timespec_to_ns(ts_finish) - timespec_to_ns(ts_start), timespec_to_ns(ts_finish) - timespec_to_ns(ts_start_meta_xchange));
+    // fprintf(logf, "%u,%lu,%lu\n", qp_num, timespec_to_ns(ts_finish) - timespec_to_ns(ts_start), timespec_to_ns(ts_finish) - timespec_to_ns(ts_start_meta_xchange));
+    fprintf(logf, "%u,%lu\n", qp_num, timespec_to_ns(ts_finish) - timespec_to_ns(ts_start));
     fflush(logf);
     
     if (ret != 1)
