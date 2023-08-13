@@ -30,14 +30,14 @@ Client runs a number of samples where the number will be indicated in `rdma_clie
 ### How to build
 This repository requires `CMake>=2.6`. To build, use the commands:
 ```shell
-cmake .; make;
+>> cmake .; make;
 ``` 
 We provide a bash script `./clear.sh` to clean up all binary/log files.
 
 ### Preliminary 1: Crate message-file to send
 You can create a dummy text file on linux using the following command:
 ```shell
-base64 /dev/urandom | head -c 100000 > 100KB.txt
+>> base64 /dev/urandom | head -c 100000 > 100KB.txt
 ```
 The option `-c` indicates the size of file to write. Later, RDMA client will send the file. 
 Put the output files to the directory `/src`.
@@ -45,7 +45,7 @@ Put the output files to the directory `/src`.
 ### Preliminary 2: To enable large-file transmission
 Your basic linux setup would limit the stack size to 8MB (check `ulimit -a`). To resolve it, you can use the command:
 ```shell
-ulimit -s unlimited
+>> ulimit -s unlimited
 ```
 If you did not run `ulimit -s unlimited`, you may confront `Segmentation Fault` error. 
 
@@ -53,7 +53,7 @@ If you did not run `ulimit -s unlimited`, you may confront `Segmentation Fault` 
 ## Running server and client
 Server:
 ```shell
-./bin/rdma_server --h
+>> ./bin/rdma_server --h
 *** Start server running (infinite loop) ***
 
 ./bin/rdma_server: invalid option -- '-'
@@ -64,7 +64,7 @@ rdma_server: [-a <server_addr>] [-p <server_port>]
 
 Client:
 ```shell
-./bin/rdma_client --h
+>> ./bin/rdma_client --h
 ---Start parsing...
 ./bin/rdma_client: invalid option -- '-'
 Usage:
@@ -78,12 +78,12 @@ Here are example commands. Suppose you have two RDMA nodes:
 
 First, run the RDMA server:
 ```shell
-./bin/rdma_server -a 10.2.2.2
+>> ./bin/rdma_server -a 10.2.2.2
 ```
 
 Next, run the RDMA client:
 ```shell
-./bin/rdma_client -a 10.2.2.2 -f /src/24387B.txt -l /log/out.dat -n 100
+>> ./bin/rdma_client -a 10.2.2.2 -f /src/24387B.txt -l /log/out.dat -n 100
 ```
 which sends a message of size 24387B to the server `10.2.2.2` and repeat it 100 times, and output log is written to `log/out.dat`.
 

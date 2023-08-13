@@ -1,4 +1,0 @@
-/home/mason/workspace/simpleRDMA/CMakeFiles/rdma_server.dir
-/home/mason/workspace/simpleRDMA/CMakeFiles/rdma_client.dir
-/home/mason/workspace/simpleRDMA/CMakeFiles/edit_cache.dir
-/home/mason/workspace/simpleRDMA/CMakeFiles/rebuild_cache.dir
