@@ -388,8 +388,7 @@ static int client_remote_memory_ops(FILE *logf)
 
     // // code to log to the file
     // printf("QPNUM: %u, DIFF: %lu\n", qp_num, timespec_to_ns(ts_finish) - timespec_to_ns(ts_start));
-    // fprintf(logf, "%u,%lu,%lu\n", qp_num, timespec_to_ns(ts_finish) - timespec_to_ns(ts_start), timespec_to_ns(ts_finish) - timespec_to_ns(ts_start_meta_xchange));
-    fprintf(logf, "%u,%lu\n", qp_num, timespec_to_ns(ts_finish) - timespec_to_ns(ts_start));
+    fprintf(logf, "%u,%lu,%lu\n", qp_num, timespec_to_ns(ts_finish) - timespec_to_ns(ts_start), timespec_to_ns(ts_finish) - timespec_to_ns(ts_start_meta_xchange));
     fflush(logf);
     
     if (ret != 1)
@@ -712,6 +711,8 @@ int main(int argc, char **argv)
         if (ret)
         {
             rdma_error("Failed to setup client connection , ret = %d \n", ret);
+            // return ret;
+            // continue;
             break;
         }
 
@@ -719,6 +720,8 @@ int main(int argc, char **argv)
         if (ret)
         {
             rdma_error("Failed to setup client connection , ret = %d \n", ret);
+            // return ret;
+            // continue;
             break;
         }
 
@@ -726,24 +729,42 @@ int main(int argc, char **argv)
         if (ret)
         {
             rdma_error("Failed to setup client connection , ret = %d \n", ret);
+            // return ret;
+            // continue;
             break;
         }
         ret = client_xchange_metadata_with_server();
         if (ret)
         {
             rdma_error("Failed to setup client connection , ret = %d \n", ret);
+            // return ret;
+            // continue;
             break;
         }
         ret = client_remote_memory_ops(logf); // start part
         if (ret)
         {
             rdma_error("Failed to finish remote memory ops, ret = %d \n", ret);
+            // return ret;
+            // continue;
             break;
         }
+#if (0)
+        if (check_src_dst())
+        {
+            rdma_error("src and dst buffers do not match \n");
+        }
+        else
+        {
+            printf("...\nSUCCESS, source and destination buffers match \n");
+        }
+#endif
         ret = client_disconnect_and_clean();
         if (ret)
         {
             rdma_error("Failed to cleanly disconnect and clean up resources \n");
+            // return ret;
+            // continue;
             break;
         }
     }

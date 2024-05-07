@@ -155,6 +155,9 @@ int process_work_completion_events(struct ibv_comp_channel *comp_channel,
     void *context = NULL;
     int ret = -1, i, total_wc = 0;
 
+    // // XXX before waiting CQ event <3> */
+    // clock_gettime(CLOCK_REALTIME, &t4_spec);
+
     /* We wait for the notification on the CQ channel */
     ret = ibv_get_cq_event(comp_channel, /* IO channel where we are expecting the notification */
                            &cq_ptr,      /* which CQ has an activity. This should be the same as CQ we created before */
@@ -192,6 +195,14 @@ int process_work_completion_events(struct ibv_comp_channel *comp_channel,
 
     // maybe last ACK arrives <5>
     clock_gettime(CLOCK_REALTIME, finish_ts);
+    // printf("Pausing after T5\n");
+    // getchar();
+    debug("*** XXX MAYBE A LAST ACK ARRIVES: %d=1 ???\n\n\n", total_wc);
+
+    // printf("process_work_completion_events: %lu, %lu, %lu\n",
+    //        timespec_to_ns(t4_spec) & 0xFFFFFFFF,
+    //        timespec_to_ns(t5_spec) & 0xFFFFFFFF,
+    //        timespec_to_ns(t6_spec) & 0xFFFFFFFF);
 
     debug("%d WC are completed \n", total_wc);
     /* Now we check validity and status of I/O work completions */
@@ -202,6 +213,10 @@ int process_work_completion_events(struct ibv_comp_channel *comp_channel,
             /* return negative value */
             return -(wc[i].status);
         }
+        // else {
+        //     // XXX
+        //     printf("BYTES TRANSFERRED TO SERVER: %d\n", wc[i].byte_len);
+        // }
     }
     /* Similar to connection management events, we need to acknowledge CQ events */
     ibv_ack_cq_events(cq_ptr,
